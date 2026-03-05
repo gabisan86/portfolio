@@ -10,6 +10,11 @@
 <body>
   <nav class="navbar">
     <div class="nav-logo">gabi's Portfolio</div>
+    <button class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <ul class="nav-links">
       <li><a href="#about">自己紹介</a></li>
       <li><a href="#skills">スキル</a></li> 
@@ -22,7 +27,7 @@
     <p>Web制作・コーディングでお手伝いします</p>
   </header>
   <section class="section" id="about">
-    <h2>自己紹介</h2>
+    <h2 class="fade-in">自己紹介</h2>
    <p>
      はじめまして、gabiと申します。<br>
      現在、フリーランスのWeb制作者として独立を目指して学習中です。<br><br>
@@ -35,7 +40,7 @@
    </p>
   </section>
   <section class="section" id="skills">
-    <h2>スキル</h2>
+    <h2 class="fade-in">スキル</h2>
     <div class="skill-grid">
       <div class="skill-card">
         <div class="skill-icon">🌐</div>
@@ -60,7 +65,7 @@
     </div>
   </section>
   <section class="section" id="works">
-    <h2>制作実績</h2>
+    <h2 class="fade-in">制作実績</h2>
     <div class="card-grid">
       <div class="card">
         <img src="images/work1.jpg" alt="作品1" class="card-img">
@@ -75,12 +80,59 @@
     </div>
   </section>
   <section class="section" id="contact">
-    <h2>お問い合わせ</h2>
+    <h2 class="fade-in">お問い合わせ</h2>
     <p>お仕事のご依頼はこちらからどうぞ。</p>
     <a class="btn" href="mailto:gabitake0@gmail.com">メールで問い合わせる</a>
   </section>
   <footer>
     <p>&copy; 2026 gabiさん All rights reserved.</p>
   </footer>
+  <button id="back-to-top">↑</button>
+  <script>
+    // フェードイン
+    const fadeItems = document.querySelectorAll('.fade-in');
+    // ナビクリック時にフェードインを即表示
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function() {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.classList.add('visible');
+        }
+      });
+    });
+
+    const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  });
+
+  fadeItems.forEach(function(item) {
+    observer.observe(item);
+  });
+  // ページトップに戻るボタン
+  const backToTop = document.getElementById('back-to-top');
+
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 300) {
+      backToTop.style.display = 'block';
+    } else {
+      backToTop.style.display = 'none';
+    }
+  });
+
+  backToTop.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  // ハンバーガーメニュー
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.querySelector('.nav-links');
+
+  hamburger.addEventListener('click', function() {
+    navLinks.classList.toggle('open');
+  });
+</script>
 </body>
 </html>
