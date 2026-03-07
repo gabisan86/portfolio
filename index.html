@@ -80,10 +80,15 @@
     </div>
   </section>
   <section class="section" id="contact">
-    <h2 class="fade-in">お問い合わせ</h2>
-    <p>お仕事のご依頼はこちらからどうぞ。</p>
-    <a class="btn" href="mailto:gabitake0@gmail.com">メールで問い合わせる</a>
-  </section>
+  <h2 class="fade-in">お問い合わせ</h2>
+  <p>お仕事のご依頼はこちらからどうぞ。</p>
+  <form action="https://formspree.io/f/mzdjbovz" method="POST" class="contact-form">
+    <input type="text" name="name" placeholder="お名前" required>
+    <input type="email" name="email" placeholder="メールアドレス" required>
+    <textarea name="message" placeholder="メッセージ" rows="5" required></textarea>
+    <button type="submit" class="btn">送信する</button>
+  </form>
+</section>
   <footer>
     <p>&copy; 2026 gabiさん All rights reserved.</p>
   </footer>
